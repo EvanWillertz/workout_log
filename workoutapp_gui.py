@@ -10,6 +10,16 @@ import os
 import re
 
 
+
+
+def resource_path(relative_path: str) -> str:
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, "_MEIPASS", os.path.abspath("."))
+    return os.path.join(base_path, relative_path)
+
+
+
+
 class WorkoutAppGUI(ctk.CTk):
 
     def __init__(self, manager):
@@ -18,7 +28,8 @@ class WorkoutAppGUI(ctk.CTk):
         self.manager = manager
 
         # set title at top
-        self.title("Your Workout Tracker")
+        self.title("Workout Tracker")
+        self.iconbitmap(resource_path("barbell.ico"))
         # set the geometry
         self.geometry("1100x700+200+100")  # width x height + x_offset + y_offset
         self.minsize(width=1100, height=700)
@@ -79,7 +90,7 @@ class HomeScreen(ctk.CTkFrame):
 
         # loading the image for the home screen
         # self.original_image = Image.open('gym_pic.jpg')  # Make sure this image exists in the same directory
-        self.original_image = Image.open(resource_path("build/gym_pic.jpg")) 
+        self.original_image = Image.open(resource_path("gym_pic.jpg")) 
         self.ctk_image = ctk.CTkImage(light_image=self.original_image, dark_image=self.original_image, size=(500, 700))  # Resize as needed
     
         # Display the image in a label
@@ -128,12 +139,6 @@ class HomeScreen(ctk.CTkFrame):
 
             # Store a reference so it doesn't get garbage collected
             self.ctk_image = new_ctk_image
-
-
-def resource_path(relative_path: str) -> str:
-    """ Get absolute path to resource, works for dev and for PyInstaller """
-    base_path = getattr(sys, "_MEIPASS", os.path.abspath("."))
-    return os.path.join(base_path, relative_path)
 
 
 

@@ -195,12 +195,12 @@ class WorkoutManager():
 
     def load_data(self):
         """Loads training blocks from JSON if available."""
-        print("Loading data...")
+        # print("Loading data...")
         # Check if the file exists and is not empty
         if os.path.exists(self.DATA_FILE):
             with open(self.DATA_FILE, "r") as f:
                 try:
-                    print("Loading data from file...")
+                    # print("Loading data from file...")
                     data = json.load(f)   # load the data from the file                    
                     self.all_exercises = data.get("all_exercises", [])
                     self.training_blocks = [TrainingBlock.from_dict(block) for block in data.get("training_blocks", [])]
@@ -211,7 +211,7 @@ class WorkoutManager():
         if os.path.exists(self.TOTAL_DATA_FILE):
             with open(self.TOTAL_DATA_FILE, "r") as f:
                 try:
-                    print("Loading data for tracker...")
+                    # print("Loading data for tracker...")
                     data = json.load(f)   # load the data from the file
                     self.over_time_tracker = data
                     # print(self.over_time_tracker.keys())
