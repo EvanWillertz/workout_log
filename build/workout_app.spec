@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['workout_app.py'],
+    ['..\\workout_app.py'],
     pathex=[],
     binaries=[],
     datas=[('default_training_block_data.json', '.'), ('default_training_data.json', '.'), ('gym_pic.jpg', '.')],

@@ -18,7 +18,7 @@ class WorkoutAppGUI(ctk.CTk):
         self.manager = manager
 
         # set title at top
-        self.title("Evan's Workout Log")
+        self.title("Your Workout Tracker")
         # set the geometry
         self.geometry("1100x700+200+100")  # width x height + x_offset + y_offset
         self.minsize(width=1100, height=700)
@@ -79,20 +79,20 @@ class HomeScreen(ctk.CTkFrame):
 
         # loading the image for the home screen
         # self.original_image = Image.open('gym_pic.jpg')  # Make sure this image exists in the same directory
-        self.original_image = Image.open(resource_path("gym_pic.jpg")) 
+        self.original_image = Image.open(resource_path("build/gym_pic.jpg")) 
         self.ctk_image = ctk.CTkImage(light_image=self.original_image, dark_image=self.original_image, size=(500, 700))  # Resize as needed
-
+    
         # Display the image in a label
         self.image_label = ctk.CTkLabel(self, image=self.ctk_image, text="")  # text="" hides label text
         self.image_label.grid(row=0, column=0, rowspan=6, sticky="nsw")
 
 
-        self.label = ctk.CTkLabel(self, text="Welcome to Evan's Workout Log!", font=ctk.CTkFont(size=39, weight='bold'), text_color="#0C0C0C")
-        self.label.grid(row=0, column=1, pady=(20, 0), sticky="n")
+        self.label = ctk.CTkLabel(self, text="Welcome To Your Personal\nWorkout Tracker!", font=ctk.CTkFont(size=40, weight='bold'), text_color="#0C0C0C")
+        self.label.grid(row=0, column=1, pady=(10, 0), sticky="n")
 
         # button to create a new training block
         self.new_block_button = ctk.CTkButton(self, border_color="#000000", border_width=2, hover_color="#28569C", text_color="#0C0C0C", fg_color="#2E63B3", width=550, height=80, font=ctk.CTkFont(size=35), text="Create Training Block", command=lambda: controller.show_frame(NewBlockScreen))
-        self.new_block_button.grid(row=1, column=1, pady=10)
+        self.new_block_button.grid(row=1, column=1, pady=(0, 10))
 
         # button to add a workout to an existing training block
         self.add_workout_button = ctk.CTkButton(self, border_color="#000000", border_width=2, hover_color="#28569C", text_color="#0C0C0C", fg_color="#2E63B3", width=550, height=80, font=ctk.CTkFont(size=35), text="Add Workout", command=lambda: controller.show_frame(AddWorkoutScreen))
@@ -471,6 +471,10 @@ class AddWorkoutScreen(ctk.CTkFrame):
 
     def create_workout(self, block, template):
         # print(f"creating workout now with block starting on {block.starting_date} with template {template.name}")
+        # Destroy existing exercise frames if any
+        if hasattr(self, "frames"):
+            for frame in self.frames:
+                frame.destroy()
 
         # initializing the workout object
         self.workout = Workout(template_name=template.name)
