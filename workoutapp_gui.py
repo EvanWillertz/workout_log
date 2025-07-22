@@ -446,8 +446,8 @@ class AddWorkoutScreen(ctk.CTkFrame):
         self.exit_button = ctk.CTkButton(self, corner_radius=0, fg_color="#FF1E1E", hover_color="#CB1919", text="Exit to Home Screen (will not save Workout)", command=lambda: self.exit_to_home(), font=ctk.CTkFont(size=10), border_color="#000000", border_width=2, text_color="#0C0C0C")
         self.exit_button.grid(row=1, column=0, padx=(0, 10), pady=(0, 0), sticky='w')
 
-        self.diff_date = ctk.CTkEntry(self, placeholder_text="Enter Workout Date, If Not Today (MM-DD-YYYY)", fg_color="#90938F", border_color="#000000", border_width=2, font=ctk.CTkFont(size=20), placeholder_text_color="#0C0C0C", justify="center")
-        self.diff_date.grid(row=1, column=1, padx=10, pady=(0, 10), sticky="ew")
+        # self.diff_date = ctk.CTkEntry(self, placeholder_text="Enter Workout Date, If Not Today (MM-DD-YYYY)", fg_color="#90938F", border_color="#000000", border_width=2, font=ctk.CTkFont(size=20), placeholder_text_color="#0C0C0C", justify="center", text_color="#0C0C0C")
+        # self.diff_date.grid(row=1, column=1, padx=10, pady=(0, 10), sticky="ew")
         
 
     def exit_to_home(self):
@@ -467,6 +467,9 @@ class AddWorkoutScreen(ctk.CTkFrame):
 
         if self.block_template:
             self.block_template.destroy()
+
+        self.diff_date = ctk.CTkEntry(self, placeholder_text="Enter Workout Date, If Not Today (MM-DD-YYYY)", fg_color="#90938F", border_color="#000000", border_width=2, font=ctk.CTkFont(size=20), placeholder_text_color="#0C0C0C", justify="center", text_color="#0C0C0C")
+        self.diff_date.grid(row=1, column=1, padx=10, pady=(0, 10), sticky="ew")
 
         # this creates the StartDate_NumberWorkouts frame after the reset so that it is blank 
         # This calls the create_block method when the button is clicked to return the start date and number of workouts
@@ -536,7 +539,8 @@ class AddWorkoutScreen(ctk.CTkFrame):
                 formatted_date = date_obj.strftime("%B %d, %Y")
                 self.workout.date = formatted_date
 
-                self.diff_date = ctk.StringVar(value="")  # Reset the date entry field
+                # self.diff_date.setvar("")  # Reset the date entry field
+                self.diff_date.delete(0, 'end')  # Clear the date entry field
 
             self.workout.add_entry(self.workout_entries) # adding the entries list to the workout object
             self.block.add_workout(self.workout)
@@ -592,7 +596,7 @@ class Exercises(ctk.CTkFrame):
 
             self.grid_propagate(False)
 
-            self.label = ctk.CTkLabel(self, text_color="#0C0C0C", text=f"{exercise_name}", font=ctk.CTkFont(size=30, weight="bold"))
+            self.label = ctk.CTkLabel(self, text_color="#0C0C0C", text=f"{exercise_name}", font=ctk.CTkFont(size=25, weight="bold"))
             self.label.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="ew")
 
             self.skip_var = ctk.BooleanVar()

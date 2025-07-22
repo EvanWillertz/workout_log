@@ -12,3 +12,9 @@ It allows you to:
 To use:
 
 Download the exe program in the dist file and the corrisponding operating system. Start by entering your exercises and then building out workout blocks to add workouts to.
+
+
+If you make changes and wish to re-create the executable, plug this into your terminal with your current directory being this folder:
+
+(**This is for Windows...**)
+"pyinstaller --onefile --noconsole  --icon=barbell.ico --add-data "default_training_block_data.json;." --add-data "default_training_data.json;." --add-data "gym_pic.jpg;." --add-data "barbell.ico;." --distpath dist\Windows --workpath build --specpath build workout_app.py"
