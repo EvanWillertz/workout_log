@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from workout import Workout
-from PIL import Image
+from PIL import Image, ImageTk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from datetime import datetime
@@ -29,7 +29,11 @@ class WorkoutAppGUI(ctk.CTk):
 
         # set title at top
         self.title("Workout Tracker")
-        self.iconbitmap(resource_path("barbell.ico"))
+        # self.iconbitmap(resource_path("barbell.ico"))
+        icon_img = Image.open(resource_path("barbell-4.png"))
+        icon_image = ImageTk.PhotoImage(icon_img)
+        self.iconphoto(False, icon_image)   # type: ignore
+
         # set the geometry
         self.geometry("1100x700+200+100")  # width x height + x_offset + y_offset
         self.minsize(width=1100, height=700)
