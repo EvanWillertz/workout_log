@@ -5,7 +5,7 @@ a = Analysis(
     ['..\\workout_app.py'],
     pathex=[],
     binaries=[],
-    datas=[('barbell-4.png', '.'), ('default_training_block_data.json', '.'), ('default_training_data.json', '.'), ('gym_pic.jpg', '.'), ('barbell.ico', '.')],
+    datas=[('default_training_block_data.json', '.'), ('default_training_data.json', '.'), ('gym_pic.jpg', '.'), ('barbell.ico', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -35,4 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon=['barbell.ico'],
 )
