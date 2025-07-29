@@ -1,5 +1,5 @@
 # workout_log
-This GUI app allows users to enter workouts and track progress over time.
+This GUI app allows users to enter workouts and track progress over time. Head over to the "release" section of this repository to access the Windows, Linux, or macOS versions of an exectuable file to run the program!
 
 ## It allows you to:
 
