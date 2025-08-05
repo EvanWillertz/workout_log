@@ -19,7 +19,7 @@ Download the exe program in the release section in the repo that goes with the c
 (**This is for Windows...** It lets you keep the barbell as the icon for the app.)
 pyinstaller --onefile --noconsole  --icon=barbell.ico --add-data "default_training_block_data.json;." --add-data "default_training_data.json;." --add-data "gym_pic.jpg;." --add-data "barbell.ico;." --distpath dist\Windows --workpath build --specpath build workout_app.py
 
-(**This is for Linux** If you use Linux, you have to go into workoutapp_gui.py and comment out / uncomment the code on lines 34-36.)
+(**This is for Linux**)
 pyinstaller --onefile --noconsole --hidden-import=PIL._tkinter_finder --add-data "barbell-4.png:." --add-data "default_training_block_data.json:." --add-data "default_training_data.json:." --add-data "gym_pic.jpg:." --add-data "barbell.ico:." --distpath dist/Linux --workpath build --specpath build workout_app.py
 
 (**This is for macOS**, you have to add "workoutapp_gui.py" to the build folder before building the executable...)
