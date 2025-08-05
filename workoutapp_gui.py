@@ -31,7 +31,7 @@ class WorkoutAppGUI(ctk.CTk):
         self.title("Workout Tracker")
 
         ### IF USING LINUX, comment out / uncomment the following lines to set the icon ###
-        # self.iconbitmap(resource_path("barbell.ico"))
+
         # icon_img = Image.open(resource_path("barbell-4.png"))
         # icon_image = ImageTk.PhotoImage(icon_img)
         # self.iconphoto(False, icon_image)   # type: ignore
